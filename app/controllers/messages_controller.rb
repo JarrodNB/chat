@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
     
+    skip_before_filter :verify_authenticity_token
+    
     #Get /messages
     def index
         @messages = Message.order(created_at: :asc)
