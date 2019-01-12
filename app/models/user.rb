@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
   has_many :messages
   validates :auth_token, uniqueness: true
+  validates :email, uniqueness: true
   
   def generate_authentication_token!
     begin
