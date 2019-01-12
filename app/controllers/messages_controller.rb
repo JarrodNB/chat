@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
     
-    skip_before_filter :verify_authenticity_token
+    #skip_before_filter :verify_authenticity_token
+    before_action :authenticate_with_token!, only: [:index, :create]
     
     #Get /messages
     def index
@@ -11,6 +12,7 @@ class MessagesController < ApplicationController
     #Post /messages
     def create
         @message = Message.new(message_params)
+        @message.users_id = current_user.id
         if @message.save
             render json: @message
         else
