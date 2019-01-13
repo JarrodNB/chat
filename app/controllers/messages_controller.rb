@@ -13,8 +13,9 @@ class MessagesController < ApplicationController
     def create
         @message = Message.new(message_params)
         @message.users_id = current_user.id
+        @message.user_email = current_user.email
         if @message.save
-            render json: @message
+            render json: @message, status: 200
         else
             render json: @message.errors, status: :unprocessable_entity
         end

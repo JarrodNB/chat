@@ -22,6 +22,8 @@ module Workspace
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     
+    config.web_console.whitelisted_ips = '68.117.193.77'
+
     # Allows for any source to use API
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do

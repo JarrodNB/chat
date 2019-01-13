@@ -8,14 +8,15 @@ class UsersController < ApplicationController
     
     #Post /users
     def create
-        user = User.new(user_params)
-        if user.save
-            render json: user, status: 201, location: [:api, user]
+        @user = User.new(user_params)
+        if @user.save
+            render json: @user, status: 201
         else
-            render json: { errors: user.errors }, status: 422
+            render json: @user.errors.full_messages, status: 422
         end
     end
     
+    # remove
     #Get /users/:id
     def show
         render json: User.find(params[:id])
