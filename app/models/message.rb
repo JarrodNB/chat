@@ -3,6 +3,6 @@ class Message < ActiveRecord::Base
     
     validates :body, presence: true
     validates :users_id, presence: true
-    validates :user_email, presence: true
+    validates :username, presence: true
     
 end

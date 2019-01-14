@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     def create
         @message = Message.new(message_params)
         @message.users_id = current_user.id
-        @message.user_email = current_user.email
+        @message.username = current_user.username
         if @message.save
             render json: @message, status: 200
         else

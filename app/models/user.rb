@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :messages
   validates :auth_token, uniqueness: true
   validates :email, uniqueness: true
+  validates :username, uniqueness: true
   
   def generate_authentication_token!
     begin

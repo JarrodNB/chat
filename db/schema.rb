@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190113205422) do
+ActiveRecord::Schema.define(version: 20190113233138) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "users_id"
-    t.string   "user_email"
+    t.string   "username"
   end
 
   add_index "messages", ["users_id"], name: "index_messages_on_users_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20190113205422) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "auth_token",             default: ""
+    t.string   "username"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
