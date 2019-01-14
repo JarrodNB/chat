@@ -24,6 +24,7 @@ module Workspace
     
     config.web_console.whitelisted_ips = '68.117.193.77'
 
+    config.web_console.automount = true
     # Allows for any source to use API
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
