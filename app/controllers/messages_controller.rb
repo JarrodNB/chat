@@ -12,12 +12,12 @@ class MessagesController < ApplicationController
     #Post /messages
     def create
         @message = Message.new(message_params)
-        @message.users_id = current_user.id
+        @message.user_id = current_user.id
         @message.username = current_user.username
         if @message.save
-            render json: @message, status: 200
+            render json: @message, status: 201
         else
-            render json: @message.errors, status: :unprocessable_entity
+            render json: @message.errors, status: 422
         end
     end
     

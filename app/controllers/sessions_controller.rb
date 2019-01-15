@@ -9,12 +9,15 @@ class SessionsController < ApplicationController
         logger.info(user_email)
         # ^^
         user = user_email.present? && User.find_by(email: user_email)
-
+        # check if user is nil?
+        if user.nil?
+            render json: { errors: "Invalid email or password" }, status: 422
+        end
         if user.valid_password? user_password
             sign_in user, store: false
             user.generate_authentication_token!
             user.save
-            render json: user, status: 200
+            render json: user, status: 201
         else
             render json: { errors: "Invalid email or password" }, status: 422
         end

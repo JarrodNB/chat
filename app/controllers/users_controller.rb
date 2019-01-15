@@ -16,12 +16,12 @@ class UsersController < ApplicationController
         end
     end
     
-    # remove
+=begin
     #Get /users/:id
     def show
         render json: User.find(params[:id])
     end
-    
+=end
     private
     
     def user_params
