@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   
   has_many :messages
   validates :auth_token, uniqueness: true
-  validates :email, uniqueness: true
-  validates :username, uniqueness: true
+  validates :email, uniqueness: true, length: { minimum: 1, maximum: 50 }
+  validates :username, uniqueness: true, length: { minimum: 1, maximum: 25 }
   
   def generate_authentication_token!
     begin

@@ -4,12 +4,7 @@ class SessionsController < ApplicationController
     def create
         user_password = params[:session][:password]
         user_email = params[:session][:email]
-        # remove
-        logger.info(user_password)
-        logger.info(user_email)
-        # ^^
         user = user_email.present? && User.find_by(email: user_email)
-        # check if user is nil?
         if user.nil?
             render json: { errors: "Invalid email or password" }, status: 422
         end
@@ -23,7 +18,7 @@ class SessionsController < ApplicationController
         end
     end
     
-    # destory
+    # destory /destory
     def destroy
         user = User.find_by(auth_token: params[:auth_token])
         user.generate_authentication_token!

@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
     
-    #Get /users
-    def index
-        @users = User.all
-        render json: @users
-    end
-    
     #Post /users
     def create
         @user = User.new(user_params)
@@ -16,12 +10,6 @@ class UsersController < ApplicationController
         end
     end
     
-=begin
-    #Get /users/:id
-    def show
-        render json: User.find(params[:id])
-    end
-=end
     private
     
     def user_params

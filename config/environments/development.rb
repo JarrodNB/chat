@@ -41,6 +41,7 @@ Rails.application.configure do
   
   # trying to fix heroku
   config.web_console.automount = true
+  # Allows any IP to access API
   config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
